@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import lombok.Data;
 
+//重要 重要 重要 一定要实现序列化
 @Data
 public class User implements Serializable{
 	/**
