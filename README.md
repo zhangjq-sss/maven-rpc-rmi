@@ -1,3 +1,2 @@
-1.实体需实现序列化。
-2.接口必须抛出RemoteEexception异常。
-3.需要有端口号。
+SOFABOOT+SOFARPC+ZOOKEEPER集群的入门实例-需要docker-zookeeper支持
+参考地址：https://github.com/alipay/sofa-boot/tree/master/sofaboot-samples/sofaboot-sample-with-rpc
