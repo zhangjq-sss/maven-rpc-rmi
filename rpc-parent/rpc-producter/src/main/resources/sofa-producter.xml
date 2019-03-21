@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://sofastack.io/schema/sofaboot"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd"
+       default-autowire="byName">
+    <bean id="iRemoteServiceImpl" class="kobe.been.zjq.rpc_producter.impl.IRemoteServiceImpl"/>
+    <bean id="iRemoteServiceImplRest" class="kobe.been.zjq.rpc_producter.impl.IRemoteServiceImplRest"/>
+
+    <!-- 以多种通信协议发布服务 -->
+    <sofa:service ref="iRemoteServiceImpl" interface="kobe.been.zjq.rpc_service.IRemoteService">
+        <sofa:binding.bolt/>
+        <sofa:binding.dubbo/>
+    </sofa:service>
+    
+    <sofa:service ref="iRemoteServiceImplRest" interface="kobe.been.zjq.rpc_service.IRemoteServiceRest">
+        <sofa:binding.rest/>
+    </sofa:service>
+</beans>

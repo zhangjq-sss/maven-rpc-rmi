@@ -1,9 +1,9 @@
 package kobe.been.zjq.rpc_producter.impl;
 
 import kobe.been.zjq.rpc_domain.user.User;
-import kobe.been.zjq.rpc_service.IRemoteService;
+import kobe.been.zjq.rpc_service.IRemoteServiceRest;
 
-public class IRemoteServiceImpl implements IRemoteService{
+public class IRemoteServiceImplRest implements IRemoteServiceRest{
 
 	@Override
 	public User getUserById(Long id){
