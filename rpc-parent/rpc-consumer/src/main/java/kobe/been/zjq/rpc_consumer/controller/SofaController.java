@@ -11,7 +11,9 @@ import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
 import kobe.been.zjq.rpc_service.H2CService;
 import kobe.been.zjq.rpc_service.IRemoteService;
 import kobe.been.zjq.rpc_service.IRemoteServiceRest;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 public class SofaController {
 
@@ -47,5 +49,14 @@ public class SofaController {
 	public String getByBindingH2c() {
 		
 		return h2cSyncService.getUserById(4l).toString();
+	}
+	
+	@RequestMapping("/log")
+	public String log() {
+		log.debug("-------------debug-----------------");
+		log.info("+++++++++++++++++info++++++++++++++++++");
+		log.warn("~~~~~~~~~~~~~~~~~~warn~~~~~~~~~~~~~~~~~~~~");
+		log.error("*******************error**********************");
+		return "SUCCESS";
 	}
 }

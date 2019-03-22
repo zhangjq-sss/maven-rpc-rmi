@@ -4,10 +4,7 @@ import java.rmi.RemoteException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ImportResource;
-
-import kobe.been.zjq.rpc_service.IRemoteService;
 
 @ImportResource({ "classpath:sofa-consumer.xml" })
 @SpringBootApplication
@@ -15,7 +12,7 @@ public class ConsumerApplication {
 
     public static void main(String[] args) throws RemoteException {
     	SpringApplication springApplication = new SpringApplication(ConsumerApplication.class);
-        ApplicationContext applicationContext = springApplication.run(args);
+        springApplication.run(args);
 
 //        IRemoteService boltSyncService = (IRemoteService) applicationContext.getBean("boltSyncServiceReference");
 //        IRemoteService restSyncService = (IRemoteService) applicationContext.getBean("restSyncServiceReference");
