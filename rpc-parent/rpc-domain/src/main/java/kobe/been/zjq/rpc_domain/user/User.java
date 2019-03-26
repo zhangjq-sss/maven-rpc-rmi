@@ -1,6 +1,7 @@
 package kobe.been.zjq.rpc_domain.user;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import lombok.Data;
 
@@ -14,4 +15,8 @@ public class User implements Serializable{
 	private long id;
 	private String userName;
 	private String password;
+	private Date createTime;
+    private Integer version;
+    private Date lastUpdateTime;
+    private Boolean deleted;
 }

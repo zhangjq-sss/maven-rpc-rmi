@@ -21,6 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<logback.version>1.2.3</logback.version>
 		<slf4j.version>1.7.25</slf4j.version>
+		<springfox-swagger2.version>2.8.0</springfox-swagger2.version>
 	</properties>
 
 	<dependencyManagement>
@@ -51,8 +52,8 @@
 	<modules>
 		<module>rpc-domain</module>
 		<module>rpc-utils</module>
-		<module>rpc-consumer</module>
-		<module>rpc-producter</module>
+		<module>rpc-product</module>
+		<module>rpc-user</module>
 		<module>rpc-service</module>
 	</modules>
 </project>

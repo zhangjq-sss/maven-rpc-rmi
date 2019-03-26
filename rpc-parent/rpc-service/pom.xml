@@ -20,6 +20,11 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
 	<dependency>
+			<groupId>kobe.been.zjq</groupId>
+			<artifactId>rpc-utils</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	<dependency>
 		<groupId>org.jboss.resteasy</groupId>
 		<artifactId>jaxrs-api</artifactId>
 		<version>3.0.12.Final</version>

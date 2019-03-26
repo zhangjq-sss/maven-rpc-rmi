@@ -15,5 +15,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-  </dependencies>
+	<!-- swagger2 -->
+	<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-swagger2</artifactId>
+		<version>${springfox-swagger2.version}</version>
+	</dependency>
+</dependencies>
 </project>
