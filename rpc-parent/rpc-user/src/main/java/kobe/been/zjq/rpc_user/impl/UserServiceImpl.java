@@ -1,6 +1,7 @@
 package kobe.been.zjq.rpc_user.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 	}
 
 	@Override
-	@ReadOnlyConnection(DbType.READ1)
+//	@ReadOnlyConnection(DbType.READ1)
 	public User getById(Long id) {
 		return userMapper.selectByPrimaryKey(id);
 	}
@@ -41,9 +42,14 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 			user.setDeleted(false);
 			user.setVersion(0);
 			userMapper.insert(user);
-			id = (int) user.getId();
+			id = user.getId().intValue();
 		}
 		return id;
 	}
 
+	@Override
+	public List<User> listAll() {
+		return userMapper.listAll();
+	}
+	
 }

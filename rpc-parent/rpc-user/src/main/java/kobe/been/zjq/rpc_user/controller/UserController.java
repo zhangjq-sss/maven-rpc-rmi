@@ -64,5 +64,12 @@ public class UserController {
 		return resultBody;
 	}
 	
-	
+	@ApiOperation(value = "查询所有用户", notes = "查询所有用户",  response = Object.class)
+	@RequestMapping(value="/listAll", method=RequestMethod.GET)
+	public ResultBody listAll() {
+		ResultBody resultBody = new ResultBody();
+		resultBody.success();
+		resultBody.setData(userService.listAll());
+		return resultBody;
+	}
 }

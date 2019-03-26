@@ -93,7 +93,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="version != null">
-        version = #{version,jdbcType=BIGINT},
+        version = version + 1,
       </if>
       <if test="lastUpdateTime != null">
         last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
@@ -109,7 +109,7 @@
     set user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      version = #{version,jdbcType=BIGINT},
+      version = version + 1,
       last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}

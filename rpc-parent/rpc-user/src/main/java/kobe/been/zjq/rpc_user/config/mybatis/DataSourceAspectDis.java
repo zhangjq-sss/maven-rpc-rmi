@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,38 @@ import kobe.been.zjq.rpc_user.config.mybatis.DbContextHolder.DbType;
 @Component
 @Aspect
 public class DataSourceAspectDis {
+	
+	@Pointcut("!@annotation(kobe.been.zjq.rpc_user.config.mybatis.ReadOnlyConnection) " +
+            "&& (execution(* kobe.been.zjq.rpc_user.impl..*.select*(..)) " +
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.get*(..))"+
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.find*(..))"+
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.list*(..))"+
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.query*(..)))")
+    public void readPointcut() {
+
+    }
+
+    @Pointcut("!@annotation(kobe.been.zjq.rpc_user.config.mybatis.ReadOnlyConnection) " +
+            "&& (execution(* kobe.been.zjq.rpc_user.impl..*.insert*(..)) " +
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.add*(..)) " +
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.save*(..)) " +
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.update*(..)) " +
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.edit*(..)) " +
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.delete*(..)) " +
+            "|| execution(* kobe.been.zjq.rpc_user.impl..*.remove*(..)))")
+    public void writePointcut() {
+
+    }
+    
+    @Before("readPointcut()")
+    public void read() {
+    	DbContextHolder.read();
+    }
+
+    @Before("writePointcut()")
+    public void write() {
+    	DbContextHolder.write();
+    }
 
 	@Pointcut("@annotation(kobe.been.zjq.rpc_user.config.mybatis.ReadOnlyConnection)")
 	public void dataSourcePointcut() {
