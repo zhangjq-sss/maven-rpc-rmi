@@ -1,5 +1,7 @@
 package kobe.been.zjq.rpc_utils.generic;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * GenericService的实现类, 其他的自定义 ServiceImpl, 继承自它,可以获得常用的增删查改操作,
  * 未实现的方法有 子类各自实现
@@ -17,19 +19,28 @@ public abstract class GenericServiceImpl<Model, PK> implements GenericService<Mo
      */
     public abstract GenericDao<Model, PK> getDao();
 
+    @Transactional
     @Override
     public int insert(Model model) {
-        return getDao().insertSelective(model);
+    	int result = 0;
+    	result = getDao().insertSelective(model);
+        return result;
     }
 
+    @Transactional
     @Override
     public int update(Model model) {
-        return getDao().updateByPrimaryKeySelective(model);
+        int result = 0;
+    	result = getDao().updateByPrimaryKeySelective(model);
+        return result;
     }
 
+    @Transactional
     @Override
     public int deleteByKey(PK id) {
-        return getDao().deleteByPrimaryKey(id);
+        int result = 0;
+    	result = getDao().deleteByPrimaryKey(id);
+        return result;
     }
     
     @Override
