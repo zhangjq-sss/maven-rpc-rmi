@@ -20,12 +20,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import kobe.been.zjq.rpc_user.config.mybatis.DbContextHolder.DbType;
-import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @MapperScan("kobe.been.zjq.rpc_user.dao")
 @EnableTransactionManagement
-@Slf4j
 public class MybatisConfig {
 
 	@Value("${druid.type}")

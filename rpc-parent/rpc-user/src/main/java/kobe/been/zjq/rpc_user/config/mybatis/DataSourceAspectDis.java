@@ -11,9 +11,11 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import kobe.been.zjq.rpc_user.config.mybatis.DbContextHolder.DbType;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Aspect
+@Slf4j
 public class DataSourceAspectDis {
 	
 	@Pointcut("!@annotation(kobe.been.zjq.rpc_user.config.mybatis.ReadOnlyConnection) " +
@@ -67,10 +69,17 @@ public class DataSourceAspectDis {
 		if (sourceEnum == DbType.WRITE) {
 
 			DbContextHolder.setDbType(DbType.WRITE);
+			log.info("切换到write");
 
 		} else if (sourceEnum == DbType.READ1) {
 
 			DbContextHolder.setDbType(DbType.READ1);
+			log.info("切换到read1");
+
+		}else if (sourceEnum == DbType.READ2) {
+
+			DbContextHolder.setDbType(DbType.READ2);
+			log.info("切换到read2");
 
 		}
 

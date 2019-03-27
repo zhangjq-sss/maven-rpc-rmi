@@ -28,7 +28,7 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 	}
 
 	@Override
-//	@ReadOnlyConnection(DbType.READ1)
+	@ReadOnlyConnection(DbType.READ2)
 	public User getById(Long id) {
 		return userMapper.selectByPrimaryKey(id);
 	}

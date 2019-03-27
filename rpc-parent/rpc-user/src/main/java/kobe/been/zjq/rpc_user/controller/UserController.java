@@ -33,15 +33,6 @@ public class UserController {
 		return resultBody;
 	}
 	
-//	@ApiOperation(value = "查询所有的用户", notes = "查询用户所有数据",  response = Object.class)
-//	@RequestMapping(value="/listAll")
-//	public ResultBody listAll() {
-//		ResultBody resultBody = new ResultBody();
-//		resultBody.success();
-//		resultBody.setData(userService.listAll());
-//		return resultBody;
-//	}
-	
 	@ApiOperation(value = "用户信息插入", notes = "用户信息插入",  response = ResultBody.class)
 	@ApiImplicitParams({
         @ApiImplicitParam(paramType="body", name = "userBody", value = "用户基本信息", required = true,  dataType = "RequestContent")
@@ -55,12 +46,16 @@ public class UserController {
 		return resultBody;
 	}
 	
-	@ApiOperation(value = "测试", notes = "测试接口",  response = ResultBody.class)
-	@RequestMapping(value="/test", method=RequestMethod.GET)
-	public ResultBody test() {
+	@ApiOperation(value = "用户信息更新", notes = "用户信息更新",  response = ResultBody.class)
+	@ApiImplicitParams({
+        @ApiImplicitParam(paramType="body", name = "userBody", value = "用户基本信息", required = true,  dataType = "RequestContent")
+	 })
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public ResultBody update(@RequestBody  RequestContent userBody) {
+		User user = JSON.parseObject(JSON.toJSONString(userBody.getBody()), User.class);
 		ResultBody resultBody = new ResultBody();
 		resultBody.success();
-		resultBody.setData("测试下");
+		resultBody.setData(userService.update(user));
 		return resultBody;
 	}
 	
